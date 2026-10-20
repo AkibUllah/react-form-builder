@@ -1,0 +1,103 @@
+import type { FormDefinition } from '@/lib';
+
+/** A realistic merchant onboarding form used by the "Load example" button and tests. */
+export const EXAMPLE_FORM: FormDefinition = {
+  version: 1,
+  id: 'merchant-onboarding',
+  title: 'Merchant onboarding',
+  description: 'Register a shop for online payments. Fields marked * are required.',
+  nodes: [
+    { id: 'f_business', type: 'text', key: 'businessName', label: 'Business name', placeholder: 'Rahim General Store', required: true, validation: { minLength: 3, maxLength: 80 }, options: [] },
+    { id: 'f_owner', type: 'text', key: 'ownerName', label: 'Owner name', required: true, validation: { minLength: 2 }, options: [] },
+    {
+      id: 'f_phone',
+      type: 'text',
+      key: 'phone',
+      label: 'Mobile number',
+      placeholder: '01712345678',
+      helpText: 'Bangladeshi mobile number, 11 digits.',
+      required: true,
+      validation: { pattern: '^01[3-9]\\d{8}$', patternMessage: 'Enter an 11-digit number starting with 013-019' },
+      options: [],
+    },
+    { id: 'f_email', type: 'email', key: 'email', label: 'Email', required: false, validation: {}, options: [] },
+    {
+      id: 'f_type',
+      type: 'select',
+      key: 'businessType',
+      label: 'Business type',
+      required: true,
+      validation: {},
+      options: [
+        { label: 'Grocery', value: 'grocery' },
+        { label: 'Pharmacy', value: 'pharmacy' },
+        { label: 'Restaurant', value: 'restaurant' },
+        { label: 'Other', value: 'other' },
+      ],
+    },
+    { id: 'f_type_other', type: 'text', key: 'businessTypeOther', label: 'Describe your business', required: true, validation: {}, options: [], visibleWhen: { fieldKey: 'businessType', operator: 'equals', value: 'other' } },
+    {
+      id: 's_address',
+      type: 'section',
+      key: 'address',
+      label: 'Shop address',
+      children: [
+        {
+          id: 'f_division',
+          type: 'radio',
+          key: 'division',
+          label: 'Division',
+          required: true,
+          validation: {},
+          options: [
+            { label: 'Dhaka', value: 'dhaka' },
+            { label: 'Chattogram', value: 'chattogram' },
+            { label: 'Sylhet', value: 'sylhet' },
+            { label: 'Rajshahi', value: 'rajshahi' },
+          ],
+        },
+        { id: 'f_street', type: 'textarea', key: 'street', label: 'Street address', required: true, validation: { maxLength: 200 }, options: [] },
+        { id: 'f_postcode', type: 'number', key: 'postcode', label: 'Post code', required: false, validation: { min: 1000, max: 9999 }, options: [] },
+      ],
+    },
+    {
+      id: 's_payout',
+      type: 'section',
+      key: 'payout',
+      label: 'Payout details',
+      description: 'Where settlements are sent every evening.',
+      children: [
+        {
+          id: 'f_method',
+          type: 'radio',
+          key: 'method',
+          label: 'Payout method',
+          required: true,
+          validation: {},
+          options: [
+            { label: 'bKash', value: 'bkash' },
+            { label: 'Bank transfer', value: 'bank' },
+          ],
+        },
+        { id: 'f_bkash', type: 'text', key: 'bkashNumber', label: 'bKash wallet number', required: true, validation: { pattern: '^01[3-9]\\d{8}$', patternMessage: 'Enter an 11-digit number' }, options: [], visibleWhen: { fieldKey: 'method', operator: 'equals', value: 'bkash' } },
+        { id: 'f_bank', type: 'text', key: 'bankAccount', label: 'Bank account number', required: true, validation: { minLength: 8 }, options: [], visibleWhen: { fieldKey: 'method', operator: 'equals', value: 'bank' } },
+      ],
+    },
+    {
+      id: 'f_categories',
+      type: 'multiselect',
+      key: 'categories',
+      label: 'Product categories',
+      required: true,
+      validation: { minLength: 1, maxLength: 3 },
+      options: [
+        { label: 'Food', value: 'food' },
+        { label: 'Fashion', value: 'fashion' },
+        { label: 'Electronics', value: 'electronics' },
+        { label: 'Home', value: 'home' },
+      ],
+    },
+    { id: 'f_launch', type: 'date', key: 'launchDate', label: 'Planned launch date', required: false, validation: {}, options: [] },
+    { id: 'f_terms', type: 'checkbox', key: 'acceptTerms', label: 'I accept the merchant agreement', required: true, validation: {}, options: [], defaultValue: false },
+  ],
+};
