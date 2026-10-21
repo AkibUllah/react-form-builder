@@ -1,3 +1,4 @@
+<!-- topics: react,typescript,drag-and-drop,dnd-kit,json-schema,zod,react-hook-form,form-builder,vite -->
 # React Form Builder
 
 Drag-and-drop form builder that exports JSON Schema draft-07 plus a UI schema, imports them back, and renders working forms with react-hook-form and zod validation generated from the schema.
