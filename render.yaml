@@ -1,0 +1,14 @@
+# Render blueprint: builds the nginx image from the Dockerfile and serves the built app.
+# https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: react-form-builder
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: PORT
+        value: "80"

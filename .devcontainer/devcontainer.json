@@ -1,0 +1,26 @@
+{
+  "name": "react-form-builder",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-18-bookworm",
+  "hostRequirements": {
+    "cpus": 2,
+    "memory": "4gb"
+  },
+  "postCreateCommand": "npm ci --no-audit --no-fund",
+  "postStartCommand": "nohup npm run dev -- --host 0.0.0.0 > /tmp/vite.log 2>&1 &",
+  "forwardPorts": [5174],
+  "portsAttributes": {
+    "5174": {
+      "label": "Form Builder (Vite dev server)",
+      "onAutoForward": "notify"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss",
+        "vitest.explorer"
+      ]
+    }
+  }
+}

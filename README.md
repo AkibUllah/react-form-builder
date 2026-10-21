@@ -10,6 +10,15 @@ Drag-and-drop form builder that exports JSON Schema draft-07 plus a UI schema, i
 ![Node >= 18](https://img.shields.io/badge/node-%3E%3D18-339933?logo=node.js&logoColor=white)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
+## Try it live
+
+| | |
+|---|---|
+| Live demo | https://akibullah.github.io/react-form-builder/ — the real builder; click **Example** in the toolbar to load the merchant-onboarding form, then **Preview** |
+| Run in your browser | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/AkibUllah/react-form-builder?quickstart=1) — installs dependencies and starts the Vite dev server; open the forwarded port 5174 ("Form Builder") |
+| One-click deploy | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/AkibUllah/react-form-builder) — nginx image from the Dockerfile, health check on `/healthz` |
+| Local | `npm ci && npm run dev` or `docker build -t form-builder . && docker run -p 8080:80 form-builder` (see Quick Start) |
+
 ## Why this exists
 
 KYC onboarding, merchant registration, field-survey and loan-application products all need forms that operations teams change weekly, and every change used to be a frontend ticket. The fix is a form definition that non-engineers can edit and that the product renders directly. This repository is that pipeline end to end: a builder for the definition, a lossless export to standard JSON Schema (so backends can validate the same payload with any draft-07 validator), and a renderer that turns the definition into a validated React form with conditional fields. The `src/lib` folder has no dependency on the app shell and is written to be lifted into a package.
