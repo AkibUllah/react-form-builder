@@ -2,7 +2,9 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { fileURLToPath, URL } from 'node:url';
 
+// BASE_PATH lets the same bundle be served from a sub-path (e.g. GitHub Pages: /react-form-builder/).
 export default defineConfig({
+  base: process.env.BASE_PATH ?? '/',
   plugins: [react()],
   resolve: {
     alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
