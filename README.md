@@ -4,6 +4,8 @@
 Drag-and-drop form builder that exports JSON Schema draft-07 plus a UI schema, imports them back, and renders working forms with react-hook-form and zod validation generated from the schema.
 
 [![CI](https://github.com/AkibUllah/react-form-builder/actions/workflows/ci.yml/badge.svg)](https://github.com/AkibUllah/react-form-builder/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/AkibUllah/react-form-builder/actions/workflows/codeql.yml/badge.svg)](https://github.com/AkibUllah/react-form-builder/actions/workflows/codeql.yml)
+[![Release](https://img.shields.io/github/v/release/AkibUllah/react-form-builder)](https://github.com/AkibUllah/react-form-builder/releases)
 ![React 18.3](https://img.shields.io/badge/React-18.3-61dafb?logo=react&logoColor=white)
 ![TypeScript 5.4](https://img.shields.io/badge/TypeScript-5.4-3178c6?logo=typescript&logoColor=white)
 ![JSON Schema draft-07](https://img.shields.io/badge/JSON%20Schema-draft--07-5b5b5b)
@@ -18,6 +20,20 @@ Drag-and-drop form builder that exports JSON Schema draft-07 plus a UI schema, i
 | Run in your browser | [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/AkibUllah/react-form-builder?quickstart=1) — installs dependencies and starts the Vite dev server; open the forwarded port 5174 ("Form Builder") |
 | One-click deploy | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/AkibUllah/react-form-builder) — nginx image from the Dockerfile, health check on `/healthz` |
 | Local | `npm ci && npm run dev` or `docker build -t form-builder . && docker run -p 8080:80 form-builder` (see Quick Start) |
+
+## Screenshots
+
+![Loading the example form, dragging a field onto the canvas, previewing with validation and exporting JSON Schema on the live demo](docs/images/demo.gif)
+
+*Live demo: load the example form, drag a Date field in, preview with generated validation, then export the JSON Schema.*
+
+![Builder with the field palette, the merchant-onboarding form on the canvas and the property panel](docs/images/builder.png)
+
+*Builder: palette, nested sections on the canvas (conditional fields are tagged) and the property panel for the selected field.*
+
+![Preview modal showing required-field errors and a conditional field revealed by the dropdown](docs/images/preview.png)
+
+*Preview: zod validation generated from the definition; choosing "Other" reveals the conditional "Describe your business" field.*
 
 ## Why this exists
 
@@ -206,11 +222,11 @@ npm run build     # tsc + vite build
 
 ## Roadmap
 
-- `oneOf`/`dependencies` emission so conditions are also expressed in pure JSON Schema for validators that support it.
-- Field types: file upload, phone (with `bangla-i18n` BD validation), signature, repeating groups.
-- Multi-page forms with progress and per-page validation.
-- Theming hooks for `FormRenderer` so host apps can supply their own inputs.
-- Publish `src/lib` as `@akibullah/form-builder-core`.
+- [ ] `oneOf`/`dependencies` emission so conditions are also expressed in pure JSON Schema for validators that support it (#1)
+- [ ] Field types: file upload, phone (with `bangla-i18n` BD validation), signature, repeating groups (#2)
+- [ ] Multi-page forms with progress and per-page validation (#3)
+- [ ] Theming hooks for `FormRenderer` so host apps can supply their own inputs (#4)
+- [ ] Publish `src/lib` as `@akibullah/form-builder-core` (#5)
 
 ## License
 
